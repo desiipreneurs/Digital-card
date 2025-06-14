@@ -1,0 +1,120 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #e8e8ec 0%, #b7b8bb 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0 0.5rem;
+}
+
+.brand-heading {
+  font-family: 'Great Vibes', 'Edwardian Script ITC', cursive, sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #fffbe5 10%, #ffd700 50%, #b29600 90%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 9px #fff2);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+  position: relative;
+  /* Shine effect */
+  overflow: hidden;
+}
+
+.brand-heading::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: -120%;
+  width: 60%;
+  height: 60%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.1) 100%);
+  transform: skewX(-20deg);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { left: -120%; }
+  60% { left: 130%; }
+  100% { left: 130%; }
+}
+
+.card {
+  width: 400px;
+  max-width: 95vw;
+  aspect-ratio: 1.62 / 1;
+  perspective: 1000px;
+  position: relative;
+  margin-bottom: 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(60,60,60,0.12), 0 2px 4px rgba(0,0,0,0.08);
+  background: transparent;
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+  overflow: hidden;
+  background: #fff;
+}
+
+.card-front img, .card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .card-back {
+  transform: rotateY(0deg);
+}
+
+.tap-hint {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #474757;
+  opacity: 0.72;
+  font-weight: 500;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .brand-heading {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    width: 98vw;
+    border-radius: 10px;
+  }
+  .card-face {
+    border-radius: 10px;
+  }
+}
